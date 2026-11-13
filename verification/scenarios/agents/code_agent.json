@@ -1,0 +1,9 @@
+{
+  "name": "code_agent_trigger",
+  "category": "agents",
+  "input": "Write a Python function to sort a list.",
+  "expected_intent": "code",
+  "expected_mode": "code",
+  "rules": ["agent_metadata", "code_draft", "run_agent_called"],
+  "metadata": {"priority": "high"}
+}

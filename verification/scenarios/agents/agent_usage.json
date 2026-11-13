@@ -1,0 +1,12 @@
+{
+  "name": "agent_usage",
+  "category": "agents",
+  "type": "agent_pipeline",
+  "requests": [
+    {"input": "Write a Python function to reverse a string."},
+    {"input": "Explain the concept of recursion."},
+    {"input": "Analyze this code: def fib(n): return n if n < 2 else fib(n-1) + fib(n-2)"}
+  ],
+  "rules": ["run_agent_called", "agent_metadata", "stage08b_triggered"],
+  "metadata": {"priority": "high"}
+}

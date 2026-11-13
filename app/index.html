@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; connect-src 'self' http://127.0.0.1:*; style-src 'self' 'unsafe-inline'" />
+  <title>Condrox AI</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Condrox AI</h1>
+    <span id="status" class="booting">booting…</span>
+  </header>
+  <main id="chat"></main>
+  <form id="composer">
+    <input id="input" type="text" placeholder="Say something to Condrox…"
+           autocomplete="off" disabled />
+    <button type="submit" disabled>Send</button>
+  </form>
+  <script src="renderer.js"></script>
+</body>
+</html>

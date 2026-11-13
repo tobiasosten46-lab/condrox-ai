@@ -1,0 +1,9 @@
+{
+  "name": "personal_empathy",
+  "category": "conversation",
+  "input": "I'm thinking about quitting my job. I don't know what to do.",
+  "expected_intent": "question",
+  "expected_mode": "explain",
+  "rules": ["empathy_prefix", "no_dictionary_dump", "personal_tone"],
+  "metadata": {"priority": "high"}
+}

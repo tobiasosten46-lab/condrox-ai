@@ -1,0 +1,11 @@
+{
+  "name": "quicksort_explanation",
+  "category": "intelligence",
+  "type": "reasoning",
+  "tasks": [
+    {"input": "Explain how quicksort works step by step."},
+    {"input": "What is the time complexity of quicksort and why?"}
+  ],
+  "rules": ["step_by_step", "structured", "no_hallucination"],
+  "metadata": {"priority": "medium"}
+}

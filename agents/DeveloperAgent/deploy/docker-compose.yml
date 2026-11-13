@@ -1,0 +1,95 @@
+# DeveloperAgent Docker Compose — Production deployment
+# Tier 5+ Class A
+
+version: "3.8"
+
+services:
+  condrox-coder:
+    build:
+      context: ../..
+      dockerfile: agents/DeveloperAgent/deploy/Dockerfile
+    image: condrox-coder:2.0.0
+    container_name: condrox-coder
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONDONTWRITEBYTECODE=1
+      - CONDROX_ROOT=/app
+      - CONDROX_DATA=/app/data
+      - CONDROX_LOGS=/app/logs
+      - CONDROX_CACHE=/app/cache
+    volumes:
+      - condrox-data:/app/data
+      - condrox-logs:/app/logs
+      - condrox-cache:/app/cache
+    networks:
+      - condrox-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 5s
+    deploy:
+      resources:
+        limits:
+          cpus: "2.0"
+          memory: 2G
+        reservations:
+          cpus: "0.5"
+          memory: 512M
+
+  # Prometheus for metrics collection
+  prometheus:
+    image: prom/prometheus:v2.45.0
+    container_name: condrox-prometheus
+    restart: unless-stopped
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus-data:/prometheus
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+      - "--storage.tsdb.path=/prometheus"
+      - "--web.console.libraries=/usr/share/prometheus/console_libraries"
+      - "--web.console.templates=/usr/share/prometheus/consoles"
+    networks:
+      - condrox-network
+
+  # Grafana for visualization
+  grafana:
+    image: grafana/grafana:10.0.0
+    container_name: condrox-grafana
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_ADMIN_PASSWORD:-admin}
+      - GF_USERS_ALLOW_SIGN_UP=false
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./grafana/dashboards:/etc/grafana/provisioning/dashboards:ro
+      - ./grafana/datasources:/etc/grafana/provisioning/datasources:ro
+    networks:
+      - condrox-network
+    depends_on:
+      - prometheus
+
+volumes:
+  condrox-data:
+    driver: local
+  condrox-logs:
+    driver: local
+  condrox-cache:
+    driver: local
+  prometheus-data:
+    driver: local
+  grafana-data:
+    driver: local
+
+networks:
+  condrox-network:
+    driver: bridge

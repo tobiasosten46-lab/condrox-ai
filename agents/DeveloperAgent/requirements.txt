@@ -1,0 +1,23 @@
+# DeveloperAgent v2.0 — Dependencies
+# Tier 5+ Class A
+
+# Core Condrox dependencies (inherited from parent)
+# These are already in the main requirements.txt
+# - pyyaml>=6.0
+# - dataclasses-json
+
+# API dependencies
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+pydantic>=2.5.0
+
+# CLI dependencies
+# (None beyond standard library)
+
+# Monitoring dependencies (optional)
+prometheus-client>=0.19.0
+
+# Development dependencies (optional)
+# pytest>=7.4.0
+# pytest-cov>=4.1.0
+# pytest-asyncio>=0.21.0

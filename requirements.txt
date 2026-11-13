@@ -1,0 +1,15 @@
+fastapi>=0.110.0
+uvicorn[standard]>=0.27.0
+gunicorn>=21.2.0
+numpy>=1.26.0
+pytest>=7.4.0
+httpx>=0.27.0
+pydantic>=2.0.0
+pyyaml>=6.0
+prometheus-client>=0.20.0
+slowapi>=0.1.9
+aiohttp>=3.9.0
+
+
+# Test-only dependencies
+pytest-asyncio>=0.23.0

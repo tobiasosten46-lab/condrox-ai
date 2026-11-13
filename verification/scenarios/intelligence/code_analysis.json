@@ -1,0 +1,10 @@
+{
+  "name": "code_analysis",
+  "category": "intelligence",
+  "type": "reasoning",
+  "tasks": [
+    {"input": "Analyze the following function for correctness and complexity: def bubble_sort(arr): for i in range(len(arr)): for j in range(len(arr)-1): if arr[j] > arr[j+1]: arr[j], arr[j+1] = arr[j+1], arr[j] return arr"}
+  ],
+  "rules": ["correctness", "complexity_analysis", "structured"],
+  "metadata": {"priority": "high"}
+}

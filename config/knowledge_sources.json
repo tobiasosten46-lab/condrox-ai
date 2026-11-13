@@ -1,0 +1,107 @@
+{
+  "knowledge_root_env": "CONDROX_KNOWLEDGE_ROOT",
+  "knowledge_root_default": "/data/knowledge",
+  "max_samples": 0,
+  "chunk": {
+    "min_bytes": 4096,
+    "max_bytes": 8192,
+    "encoding": "utf-8"
+  },
+  "categories": {
+    "reasoning": {
+      "description": "Reasoning and question-answering datasets.",
+      "sources": [
+        {"name": "gsm8k", "hf_name": "gsm8k", "subset": "main", "text_fields": ["question", "answer"], "format": "json"},
+        {"name": "strategyqa", "hf_name": "wics/strategy-qa", "text_fields": ["question", "answer"], "format": "json"}
+      ]
+    },
+    "logic": {
+      "description": "Logical reasoning datasets.",
+      "sources": [
+        {"name": "arc", "hf_name": "ai2_arc", "subset": "ARC-Easy", "text_fields": ["question", "choices"], "format": "json"}
+      ]
+    },
+    "ethics": {
+      "description": "Ethical reasoning datasets.",
+      "sources": [
+        {"name": "ethics", "hf_name": "hendrycks/ethics", "subset": "commonsense", "text_fields": ["input"], "format": "json"}
+      ]
+    },
+    "values": {
+      "description": "Values and social norm datasets.",
+      "sources": [
+        {"name": "social_chemistry", "hf_name": "social_chemistry", "text_fields": ["text"], "format": "json"}
+      ]
+    },
+    "morality": {
+      "description": "Moral reasoning datasets.",
+      "sources": [
+        {"name": "moral_stories", "hf_name": "moral_stories", "text_fields": ["text"], "format": "json"}
+      ]
+    },
+    "common_sense": {
+      "description": "Common sense knowledge bases.",
+      "sources": [
+        {"name": "conceptnet", "hf_name": "conceptnet", "text_fields": ["text"], "format": "json"}
+      ]
+    },
+    "cognitive_models": {
+      "description": "Cognitive model and if-then reasoning datasets.",
+      "sources": [
+        {"name": "atomic", "hf_name": "atomic", "text_fields": ["text"], "format": "json"},
+        {"name": "cognitive_atlas", "hf_name": "cognitive_atlas", "text_fields": ["text"], "format": "json"}
+      ]
+    },
+    "dialog": {
+      "description": "Conversational and dialogue datasets.",
+      "sources": [
+        {"name": "daily_dialog", "hf_name": "daily_dialog", "text_fields": ["dialog"], "format": "json"},
+        {"name": "multi_woz", "hf_name": "multi_woz", "text_fields": ["turns"], "format": "json"},
+        {"name": "persona_chat", "hf_name": "persona_chat", "text_fields": ["personality", "utterances"], "format": "json"},
+        {"name": "empathetic_dialogues", "hf_name": "empathetic_dialogues", "text_fields": ["context", "utterance"], "format": "json"}
+      ]
+    },
+    "social_intelligence": {
+      "description": "Social and support interaction data.",
+      "sources": [
+        {"name": "customer_support", "hf_name": "nvidia/ChatQA-Training-Data", "text_fields": ["text"], "format": "json"},
+        {"name": "open_subtitles", "hf_name": "open_subtitles", "text_fields": ["text"], "format": "txt"}
+      ]
+    },
+    "semantics": {
+      "description": "Lexical semantic resources.",
+      "sources": [
+        {"name": "wordnet", "hf_name": "wordnet", "text_fields": ["text"], "format": "txt"},
+        {"name": "wiktionary", "hf_name": "wiktionary", "text_fields": ["text"], "format": "txt"}
+      ]
+    },
+    "grammar": {
+      "description": "Formal and parallel corpora for grammar.",
+      "sources": [
+        {"name": "europarl", "hf_name": "Helsinki-NLP/europarl", "subset": "en", "text_fields": ["translation"], "translation_key": "en", "format": "txt"}
+      ]
+    },
+    "culture": {
+      "description": "Cultural and news discourse datasets.",
+      "sources": [
+        {"name": "news_commentary", "hf_name": "news_commentary", "text_fields": ["text"], "format": "txt"},
+        {"name": "reddit", "hf_name": "reddit", "text_fields": ["text"], "format": "txt"}
+      ]
+    },
+    "language": {
+      "description": "General language understanding corpora.",
+      "sources": [
+        {"name": "wikipedia", "hf_name": "wikipedia", "version": "20220301.en", "text_fields": ["text"], "format": "txt"},
+        {"name": "openwebtext", "hf_name": "openwebtext", "text_fields": ["text"], "format": "txt"},
+        {"name": "bookcorpus", "hf_name": "bookcorpus", "text_fields": ["text"], "format": "txt"}
+      ]
+    },
+    "world_knowledge": {
+      "description": "General world knowledge corpora.",
+      "sources": [
+        {"name": "wikipedia_categories", "hf_name": "wikipedia", "version": "20220301.en", "text_fields": ["text"], "format": "txt"},
+        {"name": "cleaned_web", "hf_name": "c4", "text_fields": ["text"], "format": "txt"}
+      ]
+    }
+  }
+}

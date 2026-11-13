@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Runtime data — created at first run, never committed
+data/
+Databases/
+*.db
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
+logs/
+*.log
+cache/
+runtime/
+
+# Secrets and local config — never commit
+.env
+*.env
+!.env.example
+.ssh*
+cloudflared*
+secrets.yaml
+*_secret*
+*.pem
+*.key
+
+# Knowledge data (large, downloaded separately)
+data/knowledge/
+knowledge/downloads/
+
+# Desktop app
+app/node_modules/
+app/dist/
+app/out/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp

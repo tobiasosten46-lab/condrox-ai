@@ -1,0 +1,27 @@
+# Prometheus configuration for DeveloperAgent metrics
+
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+  external_labels:
+    cluster: "condrox-coder"
+    tier: "class-a"
+
+scrape_configs:
+  - job_name: "condrox-coder"
+    static_configs:
+      - targets: ["condrox-coder:8000"]
+        labels:
+          service: "condrox-coder"
+          version: "2.0.0"
+    metrics_path: "/metrics"
+    scrape_interval: 15s
+    scrape_timeout: 10s
+
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets: []
+
+rule_files:
+  # - "alerts/*.yml"

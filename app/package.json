@@ -1,0 +1,17 @@
+{
+  "name": "condrox-desktop",
+  "version": "1.0.0",
+  "description": "Condrox AI desktop app — boots the Condrox cognitive backend and opens a chat interface.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder"
+  },
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "electron": "^33.0.0"
+  },
+  "allowScripts": {
+    "electron@33.4.11": true
+  }
+}

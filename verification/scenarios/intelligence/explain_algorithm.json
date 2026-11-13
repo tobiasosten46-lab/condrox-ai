@@ -1,0 +1,9 @@
+{
+  "name": "explain_algorithm",
+  "category": "intelligence",
+  "input": "Explain how quicksort works step by step.",
+  "expected_intent": "explain",
+  "expected_mode": "explain",
+  "rules": ["step_by_step", "structured", "no_hallucination"],
+  "metadata": {"priority": "medium"}
+}

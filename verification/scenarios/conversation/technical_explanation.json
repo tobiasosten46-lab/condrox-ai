@@ -1,0 +1,10 @@
+{
+  "name": "technical_explanation",
+  "category": "conversation",
+  "type": "conversation",
+  "turns": [
+    {"input": "Explain recursion in simple terms."}
+  ],
+  "rules": ["clarity", "accuracy", "relevance", "no_dictionary_dump"],
+  "metadata": {"priority": "medium"}
+}

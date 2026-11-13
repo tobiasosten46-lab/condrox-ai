@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: condrox
+  labels:
+    app.kubernetes.io/name: condrox
+    app.kubernetes.io/part-of: condrox-condrox

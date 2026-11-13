@@ -1,0 +1,14 @@
+{
+  "name": "complete_session",
+  "category": "full_system",
+  "type": "full_system",
+  "steps": [
+    {"input": "Hi, I'm new here. What can you help me with?", "category": "conversation"},
+    {"input": "Explain the difference between a list and a tuple in Python.", "category": "reasoning"},
+    {"input": "Write a Python function that checks if a string is a palindrome.", "category": "agent"},
+    {"input": "What is the capital of Norway?", "category": "rag"},
+    {"input": "Thanks, that was helpful.", "category": "conversation"}
+  ],
+  "rules": ["multi_turn_stability", "agent_triggered", "no_dictionary_dump", "api_health"],
+  "metadata": {"priority": "high"}
+}

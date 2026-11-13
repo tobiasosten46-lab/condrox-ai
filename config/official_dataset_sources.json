@@ -1,0 +1,254 @@
+{
+  "knowledge_root": "E:\\Data\\condrox\\knowledge",
+  "knowledge_root_env": "CONDROX_KNOWLEDGE_ROOT",
+  "knowledge_root_default": "/data/knowledge",
+  "downloads_dir": "E:\\Data\\condrox\\knowledge\\downloads",
+  "downloads_dir_env": "CONDROX_DOWNLOADS_DIR",
+  "downloads_dir_default": "/data/knowledge/downloads",
+  "max_parallel_downloads": 8,
+  "max_parallel_processes": 4,
+  "chunk": {
+    "min_bytes": 4096,
+    "max_bytes": 8192,
+    "encoding": "utf-8"
+  },
+  "sources": [
+    {
+      "name": "c4",
+      "category": "world_knowledge",
+      "description": "Google C4 English cleaned web text (1024 shards).",
+      "urls": "generated",
+      "url_pattern": "https://huggingface.co/datasets/allenai/c4/resolve/main/en/c4-train.{index:05d}-of-01024.json.gz",
+      "count": 1024,
+      "format": "jsonl_gz",
+      "text_fields": ["text"],
+      "max_file_size_mb": 1024,
+      "filename": "world_cleaned_web_v1"
+    },
+    {
+      "name": "wikipedia",
+      "category": "language",
+      "description": "English Wikipedia pages-articles dump.",
+      "url": "https://dumps.wikimedia.org/enwiki/20240620/enwiki-20240620-pages-articles-multistream.xml.bz2",
+      "format": "xml_bz2",
+      "text_fields": ["text"],
+      "max_file_size_mb": 1024,
+      "filename": "language_wikipedia_v1"
+    },
+    {
+      "name": "openwebtext",
+      "category": "language",
+      "description": "OpenWebText corpus (OLM-derived).",
+      "urls": "https://huggingface.co/datasets/openwebtext/resolve/main/data/subsets/openwebtext.jsonl.zst",
+      "format": "jsonl_zst",
+      "text_fields": ["text"],
+      "max_file_size_mb": 1024,
+      "filename": "language_openwebtext_v1"
+    },
+    {
+      "name": "bookcorpus",
+      "category": "language",
+      "description": "BookCorpus is not publicly redistributable; placeholder for local path.",
+      "local_path": "",
+      "format": "txt",
+      "text_fields": ["text"],
+      "filename": "language_bookcorpus_v1"
+    },
+    {
+      "name": "europarl",
+      "category": "grammar",
+      "description": "Europarl v7 English side.",
+      "url": "https://www.statmt.org/europarl/v7/europarl.tgz",
+      "format": "tar_gz",
+      "text_fields": ["text"],
+      "max_file_size_mb": 1024,
+      "filename": "grammar_europarl_v1"
+    },
+    {
+      "name": "news_commentary",
+      "category": "culture",
+      "description": "News Commentary v18 English.",
+      "url": "https://data.statmt.org/news-commentary/v18/training/news-commentary-v18.en.gz",
+      "format": "txt_gz",
+      "text_fields": ["text"],
+      "max_file_size_mb": 1024,
+      "filename": "culture_news_commentary_v1"
+    },
+    {
+      "name": "open_subtitles",
+      "category": "social_intelligence",
+      "description": "OpenSubtitles English monolingual corpus.",
+      "url": "https://opus.nlpl.eu/download.php?f=OpenSubtitles/v2018/mono/OpenSubtitles.en.gz",
+      "format": "txt_gz",
+      "text_fields": ["text"],
+      "max_file_size_mb": 1024,
+      "filename": "social_open_subtitles_v1"
+    },
+    {
+      "name": "reddit",
+      "category": "culture",
+      "description": "Pushshift Reddit comments (requires local mirrors or Pushshift archive).",
+      "urls": "generated",
+      "url_pattern": "https://files.pushshift.io/reddit/comments/RC_2006-01.zst",
+      "count": 0,
+      "format": "jsonl_zst",
+      "text_fields": ["body"],
+      "max_file_size_mb": 1024,
+      "filename": "culture_reddit_v1"
+    },
+    {
+      "name": "wiktionary",
+      "category": "semantics",
+      "description": "English Wiktionary dump.",
+      "url": "https://dumps.wikimedia.org/enwiktionary/20240620/enwiktionary-20240620-pages-articles-multistream.xml.bz2",
+      "format": "xml_bz2",
+      "text_fields": ["text"],
+      "max_file_size_mb": 1024,
+      "filename": "semantics_wiktionary_v1"
+    },
+    {
+      "name": "wordnet",
+      "category": "semantics",
+      "description": "WordNet lexicon via NLTK.",
+      "nltk": "wordnet",
+      "format": "nltk",
+      "text_fields": ["text"],
+      "filename": "semantics_wordnet_v1"
+    },
+    {
+      "name": "conceptnet",
+      "category": "common_sense",
+      "description": "ConceptNet assertions.",
+      "url": "https://s3.amazonaws.com/conceptnet/downloads/2019/edges/conceptnet-assertions-5.7.0.csv.gz",
+      "format": "csv_gz",
+      "text_fields": ["text"],
+      "max_file_size_mb": 1024,
+      "filename": "commonsense_conceptnet_v1"
+    },
+    {
+      "name": "atomic",
+      "category": "cognitive_models",
+      "description": "ATOMIC if-then commonsense.",
+      "url": "https://homes.cs.washington.edu/~msap/atomic/data/atomic_data.tgz",
+      "format": "tar_gz",
+      "text_fields": ["text"],
+      "max_file_size_mb": 1024,
+      "filename": "cognitive_atomic_v1"
+    },
+    {
+      "name": "gsm8k",
+      "category": "reasoning",
+      "description": "GSM8K grade school math.",
+      "urls": [
+        "https://raw.githubusercontent.com/openai/grade-school-math/master/grade_school_math/data/train.jsonl",
+        "https://raw.githubusercontent.com/openai/grade-school-math/master/grade_school_math/data/test.jsonl"
+      ],
+      "format": "jsonl",
+      "text_fields": ["question", "answer"],
+      "filename": "reasoning_gsm8k_v1"
+    },
+    {
+      "name": "strategyqa",
+      "category": "reasoning",
+      "description": "StrategyQA question-answer pairs.",
+      "url": "https://raw.githubusercontent.com/eladsegal/strategyqa/main/data/strategyqa_train.json",
+      "format": "json",
+      "text_fields": ["question", "answer"],
+      "filename": "reasoning_strategyqa_v1"
+    },
+    {
+      "name": "arc",
+      "category": "logic",
+      "description": "AI2 ARC (Easy split).",
+      "urls": [
+        "https://ai2-public-datasets.s3.amazonaws.com/arc/ARC-V1-Feb2018-2/ARC-Easy/ARC-Easy-Train.jsonl",
+        "https://ai2-public-datasets.s3.amazonaws.com/arc/ARC-V1-Feb2018-2/ARC-Easy/ARC-Easy-Test.jsonl",
+        "https://ai2-public-datasets.s3.amazonaws.com/arc/ARC-V1-Feb2018-2/ARC-Easy/ARC-Easy-Dev.jsonl"
+      ],
+      "format": "jsonl",
+      "text_fields": ["question", "choices"],
+      "filename": "logic_arc_v1"
+    },
+    {
+      "name": "ethics",
+      "category": "ethics",
+      "description": "ETHICS commonsense subset.",
+      "url": "https://raw.githubusercontent.com/hendrycks/ethics/master/construct_dataset.py",
+      "format": "skip",
+      "text_fields": ["input"],
+      "filename": "ethics_ethics_v1"
+    },
+    {
+      "name": "moral_stories",
+      "category": "morality",
+      "description": "Moral Stories dataset.",
+      "url": "https://github.com/demelin/MoralStories/raw/master/data/moral_stories_datasets.tar.gz",
+      "format": "tar_gz",
+      "text_fields": ["text"],
+      "filename": "morality_moral_stories_v1"
+    },
+    {
+      "name": "social_chemistry",
+      "category": "values",
+      "description": "Social Chemistry 101.",
+      "url": "https://github.com/mbforbes/social-chemistry-101/raw/main/social-chemistry-101.zip",
+      "format": "zip",
+      "text_fields": ["text"],
+      "filename": "values_social_chemistry_v1"
+    },
+    {
+      "name": "daily_dialog",
+      "category": "dialog",
+      "description": "DailyDialog conversations.",
+      "url": "https://www.aclweb.org/anthology/attachments/I17-1099.Datasets.zip",
+      "format": "zip",
+      "text_fields": ["dialog"],
+      "filename": "dialog_daily_dialog_v1"
+    },
+    {
+      "name": "multi_woz",
+      "category": "dialog",
+      "description": "MultiWOZ dialogues.",
+      "url": "https://github.com/budzianowski/multiwoz/raw/master/data/MultiWOZ_2.2.zip",
+      "format": "zip",
+      "text_fields": ["text"],
+      "filename": "dialog_multi_woz_v1"
+    },
+    {
+      "name": "persona_chat",
+      "category": "dialog",
+      "description": "PersonaChat dialogues.",
+      "url": "http://parl.ai/downloads/personachat/personachat.tgz",
+      "format": "tar_gz",
+      "text_fields": ["text"],
+      "filename": "dialog_persona_chat_v1"
+    },
+    {
+      "name": "empathetic_dialogues",
+      "category": "dialog",
+      "description": "EmpatheticDialogues dataset.",
+      "url": "https://github.com/facebookresearch/EmpatheticDialogues/raw/master/empatheticdialogues/empathetic_dialogues.zip",
+      "format": "zip",
+      "text_fields": ["text"],
+      "filename": "dialog_empathetic_dialogues_v1"
+    },
+    {
+      "name": "customer_support",
+      "category": "social_intelligence",
+      "description": "Customer support conversations (placeholder for local file).",
+      "local_path": "",
+      "format": "txt",
+      "text_fields": ["text"],
+      "filename": "social_customer_support_v1"
+    },
+    {
+      "name": "cognitive_atlas",
+      "category": "cognitive_models",
+      "description": "Cognitive Atlas concepts/tasks (placeholder, no public bulk dump).",
+      "local_path": "",
+      "format": "txt",
+      "text_fields": ["text"],
+      "filename": "cognitive_cognitive_atlas_v1"
+    }
+  ]
+}

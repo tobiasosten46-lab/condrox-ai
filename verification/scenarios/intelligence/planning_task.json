@@ -1,0 +1,10 @@
+{
+  "name": "planning_task",
+  "category": "intelligence",
+  "type": "reasoning",
+  "tasks": [
+    {"input": "Plan the implementation of a REST API for a task manager."}
+  ],
+  "rules": ["structured_plan", "phases", "feasible"],
+  "metadata": {"priority": "medium"}
+}

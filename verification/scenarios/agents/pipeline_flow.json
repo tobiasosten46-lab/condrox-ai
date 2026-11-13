@@ -1,0 +1,11 @@
+{
+  "name": "pipeline_flow",
+  "category": "agents",
+  "type": "agent_pipeline",
+  "requests": [
+    {"input": "What is the capital of Norway?"},
+    {"input": "Plan a microservice architecture for an e-commerce site."}
+  ],
+  "rules": ["pipeline_stages_executed", "metadata_propagated", "no_stage_errors"],
+  "metadata": {"priority": "medium"}
+}

@@ -1,0 +1,47 @@
+system:
+  name: "Condrox AI"
+  version: "3.4.0"
+  environment: "development"
+  log_level: "INFO"
+
+brain:
+  max_input_length: 4096
+  default_profile: "condrox"
+  enable_learning: true
+  enable_single_instance_lock: true
+  memory_decay_halflife_seconds: 86400
+  knowledge_root: "E:\\Data\\condrox\\knowledge"
+  max_chunks_per_domain: 10000
+  max_files_per_domain: 50
+
+pipeline:
+  enabled_stages:
+    - preprocessor
+    - intent
+    - intent_enrichment
+    - mode_selector
+    - domain_router
+    - context_builder
+    - context_enrichment
+    - knowledge_fetch
+    - memory_fetch
+    - reasoning_core
+    - agent_execution
+    - synthesis
+    - response_quality
+    - personality
+    - ethics
+    - security
+    - output_builder
+    - delivery
+
+security:
+  blocked_patterns:
+    - "(?i)\\b(password|secret|key|token)\\s*=\\s*['\"][^'\"]+['\"]"
+  max_request_size: 1048576
+
+ethics:
+  blocked_topics:
+    - "harm self"
+    - "harm others"
+    - "illegal activity"

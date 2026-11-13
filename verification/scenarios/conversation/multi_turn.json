@@ -1,0 +1,14 @@
+{
+  "name": "multi_turn_stability",
+  "category": "conversation",
+  "type": "conversation",
+  "turns": [
+    {"input": "Hi, I'm feeling stressed about work."},
+    {"input": "My boss keeps giving me impossible deadlines."},
+    {"input": "What should I do?"},
+    {"input": "That makes sense. Can you help me write a plan?"},
+    {"input": "Thanks, this really helps."}
+  ],
+  "rules": ["empathy_prefix", "relevance", "consistency", "no_dictionary_dump"],
+  "metadata": {"priority": "high"}
+}

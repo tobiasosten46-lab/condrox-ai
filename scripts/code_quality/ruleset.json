@@ -1,0 +1,22 @@
+{
+  "name": "Condrox Code Quality Ruleset v1.0",
+  "description": "Phase-1 rules used by CQS. Real algorithms are implemented in the analyzer; this file configures which checks are active and their thresholds.",
+  "version": "1.0.0",
+  "active_checks": [
+    "file_exists",
+    "is_text_file",
+    "no_binary_marker"
+  ],
+  "file_types": {
+    "python": [".py"],
+    "typescript": [".ts", ".tsx"],
+    "javascript": [".js", ".jsx"],
+    "markup": [".html", ".md", ".json", ".yaml", ".yml"],
+    "config": [".toml", ".ini", ".cfg", ".txt"]
+  },
+  "thresholds": {
+    "max_file_lines": 1000,
+    "max_function_lines": 80,
+    "max_cyclomatic_complexity": 15
+  }
+}
