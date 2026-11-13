@@ -21,6 +21,9 @@
 
 ## What is Condrox?
 
+> **Early-stage research release** — this is an inspectable foundation, not a
+> finished product. Rough edges are documented, not hidden.
+
 Condrox is a working conversational intelligence system that produces coherent,
 context-aware, emotionally-aware responses **without any large language model**.
 There is no external API call, no model weights, no probabilistic text
