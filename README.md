@@ -5,8 +5,9 @@
 <h1 align="center">Condrox AI</h1>
 
 <p align="center">
-  <b>A deterministic, LLM-free cognitive conversational AI — built from scratch by one person.</b><br/>
-  No GPT. No transformers. No neural networks. Just an 18-stage cognitive pipeline you can read, run, and verify.
+  <b>A deterministic cognitive conversational architecture — built from scratch by one person.</b><br/>
+  It processes language, retrieves knowledge, maintains conversational memory, performs explicit reasoning,
+  and evaluates its own responses — without relying on large language models.
 </p>
 
 <p align="center">
@@ -52,6 +53,37 @@ $ curl -X POST http://localhost:8000/chat \
 Answers in **~15 ms**, with intent, domain, emotion, and confidence — because
 nothing is predicted, everything is computed.
 
+### More real interactions (unedited)
+
+**Code generation** — intent routing → code mode → working output:
+
+```json
+Q: "write a python function to check if a number is prime"
+{
+  "response": "```python\ndef is_prime(n: int) -> bool:\n    \"\"\"Check if a number is
+   prime. Complexity: T(n) ∈ O(√n), S(n) ∈ O(1).\"\"\"\n    if n < 2: return False
+   if n == 2: return True\n    if n % 2 == 0: return False\n    ...",
+  "intent": "code", "mode": "code", "confidence": 0.88
+}
+```
+
+**Evaluating a false claim** — recognizes `2+2=5` as a known logical falsehood
+rather than agreeing:
+
+> *"2 + 2 = 5 or two plus two equals five is a mathematical falsehood which is
+> used as an example of a simple logical error that's obvious to anyone familiar
+> with basic arithmetic."*
+
+**Graceful abstention** — instead of confabulating when knowledge is missing:
+
+> *"I don't have specific knowledge about that in my current knowledge base.
+> I'm a non-LLM AI, so I can only answer from what I've been taught through my
+> knowledge backend."*
+
+**Emotional routing** — `"I'm feeling sad today"` → `intent: emotional`,
+`mode: personal`, and a supportive response — no template "sorry" wrapper,
+the emotional-detection stack actually gates the reply.
+
 ---
 
 ## Why it matters
@@ -60,7 +92,7 @@ nothing is predicted, everything is computed.
 |---|---|---|
 | Output | Token prediction (probabilistic) | Deterministic pipeline (same state → same output) |
 | Internals | Opaque weights | Every stage inspectable in source |
-| Hallucination | Inherent | Impossible by construction — only stored knowledge is spoken |
+| Factual generation | Probabilistic — can confabulate fluently | Grounded in retrieved knowledge + explicit reasoning; abstains gracefully when it lacks data. **Not immune to wrong answers** — faulty retrieval or rules can still misfire |
 | Traceability | Post-hoc interpretation | Reasoning trace per stage |
 | Memory | Context window | Persistent semantic + conversational memory graph |
 | Dependencies | Model weights (GBs) | Pure Python + NumPy |
@@ -215,6 +247,11 @@ python -m pytest tests/ -q
 # not mocks. Runtime: ~5 min.
 ```
 
+The suite verifies component correctness (pipeline stages, retrieval scoring,
+memory graphs, gates, agents, storage, API). It does **not** by itself prove
+conversational quality — for that, see `verification/scenarios/` (behavioral
+scenarios) and the live demo examples above.
+
 ## Security notes
 
 - Always set `CONDROX_API_KEY` for any non-localhost deployment.
@@ -229,6 +266,11 @@ python -m pytest tests/ -q
   answers degrade gracefully to "I don't know" rather than fabricating.
 - Retrieval-quality answers reflect the datasets chosen; it will not improvise
   facts it does not hold.
+- **Retrieval can misfire** — lexical similarity sometimes surfaces loosely
+  related content (e.g. "hash table" → periodic table). Deterministic is not
+  the same as always-right.
+- **Session memory is limited** — it stores per-session context, but
+  user-specific recall across a conversation is shallow.
 - English-centric word-identity stores.
 - The specialist agents cover their declared domains; Condrox is not a
   general autonomous agent.
